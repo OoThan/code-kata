@@ -1,1 +1,4 @@
 backend/conf/conf.yaml
+
+backend/conf/rsa_private.pem
+backend/conf/rsa_public.pem
