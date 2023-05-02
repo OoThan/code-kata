@@ -4,9 +4,11 @@ go 1.19
 
 require (
 	github.com/go-redis/redis/v8 v8.11.5
+	github.com/golang-jwt/jwt v3.2.2+incompatible
 	go.mongodb.org/mongo-driver v1.11.4
 	go.uber.org/zap v1.24.0
 	gopkg.in/natefinch/lumberjack.v2 v2.2.1
+	gopkg.in/yaml.v3 v3.0.1
 	gorm.io/driver/mysql v1.5.0
 	gorm.io/gorm v1.25.0
 )

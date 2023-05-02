@@ -3,6 +3,8 @@ package ds
 import (
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
+	"loan-back-services/conf"
+	"loan-back-services/pkg/logger"
 )
 
 func LoadDB() (*gorm.DB, error) {
