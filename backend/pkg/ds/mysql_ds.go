@@ -29,46 +29,11 @@ func LoadDB() (*gorm.DB, error) {
 
 	logger.Sugar.Info("Successfully connected to MySQL")
 
-	// //migrate DB
-	// err = db.AutoMigrate(
-	// 	&model.User{},
-	// 	&model.UserLog{},
-	// 	&model.Admin{},
-	// 	&model.AdminLog{},
-	// 	&model.Bank{},
-	// 	&model.Role{},
-	// 	&model.Permission{},
-	// 	&model.RolePermission{},
-	// 	&model.VIP{},
-	// 	&model.Article{},
-	// 	&model.WithDrawal{},
-	// 	&model.WalletBalanceLog{},
-	// 	&model.SystemConfig{},
-	// 	&model.Exchange{},
-	// 	&model.Pledge{},
-	// 	&model.Mining{},
-	// 	&model.SystemMailConfig{},
-	// 	&model.SystemDictionaryConfig{},
-	// 	&model.SystemUserConfig{},
-	// 	&model.FakeETH{},
-	// 	&model.UserLoginLog{},
-	// 	&model.TRXAuthorization{},
-	// 	&model.ETHAuthorization{},
-	// 	&model.MiningLog{},
-	// 	&model.Transfer{},
-	// 	&model.Pool{},
-	// 	&model.Media{},
-	// 	&model.SubConfig{},
-	// 	&model.Gift{},
-	// 	&model.StatisticManagement{},
-	// 	&model.TransactionHistory{},
-	// 	&model.Group{},
-	// 	&model.MarketPrice{},
-	// 	&model.BalanceCheck{},
-	// )
-	// if err != nil {
-	// 	return nil, err
-	// }
+	//migrate DB
+	err = db.AutoMigrate()
+	if err != nil {
+		return nil, err
+	}
 
 	return db, nil
 }
