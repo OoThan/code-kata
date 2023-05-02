@@ -73,7 +73,7 @@ var (
 )
 
 func init() {
-	data, err := os.ReadFile("./conf/config.yaml")
+	data, err := os.ReadFile("./conf/conf.yaml")
 	if err != nil {
 		panic(err)
 	}
