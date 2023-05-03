@@ -146,3 +146,7 @@ func MysqlDNS() string {
 func Mysql() *mysql {
 	return &_c.Mysql
 }
+
+func Rsa() *rsa_ {
+	return &_c.Rsa
+}
