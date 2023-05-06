@@ -1,6 +1,9 @@
 package utils
 
-import "gorm.io/gorm"
+import (
+	"fmt"
+	"gorm.io/gorm"
+)
 
 type Page struct {
 	Page, PageSize int
@@ -34,4 +37,40 @@ func Paginate(page, pageSize int) func(db *gorm.DB) *gorm.DB {
 		res, _ := crit.ToORM(db)
 		return res
 	}
+}
+
+type NumberTypes interface {
+	~uint | uint16 | uint32 | uint64 | int | int8 | int16 | int32 | int64
+}
+type SIUTypes interface {
+	~string | int | uint | int8
+}
+
+func Contains[T SIUTypes](s []T, str T) bool {
+	for _, v := range s {
+		if v == str {
+			return true
+		}
+	}
+
+	return false
+}
+
+func TruncateArray[T NumberTypes](s []T, size uint64) []T {
+	return s[:size]
+}
+
+func IdsIntToInCon[T NumberTypes](ids []T) string {
+	inCon := ""
+	for k, v := range ids {
+		if k == 0 {
+			inCon += fmt.Sprintf("%v", v)
+		} else {
+			inCon += fmt.Sprintf(",%v", v)
+		}
+	}
+	if inCon == "" {
+		inCon = "0"
+	}
+	return inCon
 }

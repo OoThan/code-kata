@@ -5,6 +5,7 @@ import (
 	"errors"
 	"github.com/golang-jwt/jwt"
 	"github.com/google/uuid"
+	"loan-back-services/conf"
 	"loan-back-services/pkg/dto"
 	"loan-back-services/pkg/logger"
 	"loan-back-services/pkg/model"
@@ -21,7 +22,7 @@ type adminRefreshTokenCustomClaims struct {
 	jwt.StandardClaims
 }
 
-func GenerateAccessToken(admin *model.Admin, key *rsa.PrivateKey) (string, error) {
+func GenerateAccessToken(admin *model.Admin) (string, error) {
 	unixTime := time.Now().Unix()
 	tokenExp := unixTime + 60*10 // 10 minutes
 
@@ -43,7 +44,7 @@ func GenerateAccessToken(admin *model.Admin, key *rsa.PrivateKey) (string, error
 	return ss, nil
 }
 
-func GenerateRefreshToken(admin *model.Admin, key string) (*dto.RefreshTokenData, error) {
+func GenerateRefreshToken(key string) (*dto.RefreshTokenData, error) {
 	currentTime := time.Now()
 	tokenExp := currentTime.Add(time.Duration(60*60*24*1) * time.Second) // 1 day
 
@@ -53,8 +54,14 @@ func GenerateRefreshToken(admin *model.Admin, key string) (*dto.RefreshTokenData
 		return nil, err
 	}
 
+	claim, err := ValidateAccessToken(key, conf.Rsa().PublicKey)
+	if err != nil {
+		logger.Sugar.Error(err)
+		return nil, err
+	}
+
 	claims := adminRefreshTokenCustomClaims{
-		AdminId: admin.Id,
+		AdminId: claim.Admin.Id,
 		StandardClaims: jwt.StandardClaims{
 			IssuedAt:  currentTime.Unix(),
 			ExpiresAt: tokenExp.Unix(),

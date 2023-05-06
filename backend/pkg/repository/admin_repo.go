@@ -40,7 +40,7 @@ func (r *adminRepository) List(ctx context.Context, req *dto.AdminListReq) ([]*d
 	db.Select("admins.*")
 	var total int64
 	db.Count(&total)
-	if err := db.Scopes(utils.Paginate(req.Page, req.PageSize)).First(&list).Error; err != nil {
+	if err := db.Scopes(utils.Paginate(req.Page, req.PageSize)).Find(&list).Error; err != nil {
 		return nil, 0, err
 	}
 	return list, total, nil

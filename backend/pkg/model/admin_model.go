@@ -9,9 +9,10 @@ type Admin struct {
 	Id           uint64         `gorm:"column:id;primaryKey" json:"id"`
 	Username     string         `gorm:"column:username;unique;not null" json:"username"`
 	Email        string         `gorm:"column:email;unique;not null" json:"email"`
-	Status       int            `gorm:"column:status" json:"status"`
+	Status       int            `gorm:"column:status;default:1" json:"status"`
 	Password     string         `gorm:"column:password" json:"-"`
 	IP           string         `gorm:"column:ip;type:varchar(20)" json:"ip"`
+	Location     string         `gorm:"column:location;type:varchar(255)" json:"location"`
 	Activated2fa bool           `gorm:"column:activated_2fa;default:false;not null" json:"activated_2fa"`
 	SecretKey2fa string         `gorm:"column:secret_key_2fa;size:191" json:"secret_key_2fa"`
 	CreatedAt    time.Time      `gorm:"column:created_at" json:"created_at"`

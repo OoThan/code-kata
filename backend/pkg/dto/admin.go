@@ -17,3 +17,22 @@ type AdminListResp struct {
 	CreatedAt    time.Time `json:"created_at"`
 	UpdatedAt    time.Time `json:"updated_at"`
 }
+
+type AdminAddReq struct {
+	Username string `json:"username" binding:"required"`
+	Email    string `json:"email" binding:"required""`
+	Status   int    `json:"status"`
+	Password string `json:"password" binding:"required"`
+}
+
+type AdminEditReq struct {
+	Id       uint64 `json:"id" binding:"required"`
+	Username string `json:"username" binding:"required"`
+	Email    string `json:"email" binding:"required""`
+	Status   int    `json:"status"`
+	Password string `json:"password" binding:"required"`
+}
+
+type AdminDeleteReq struct {
+	Ids []uint64 `json:"ids" binding:"required,gte=1"`
+}

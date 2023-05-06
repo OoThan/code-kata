@@ -21,10 +21,10 @@ func NewDataSource() (*DataSource, error) {
 
 	DB = db
 
-	rdb, err := LoadRDB()
-	if err != nil {
-		return nil, err
-	}
+	//rdb, err := LoadRDB()
+	//if err != nil {
+	//	return nil, err
+	//}
 
 	//mdb, err := LoadMongo()
 	//if err != nil {
@@ -32,8 +32,8 @@ func NewDataSource() (*DataSource, error) {
 	//}
 
 	return &DataSource{
-		DB:  db,
-		RDB: rdb,
+		DB: db,
+		//RDB: rdb,
 		//MDB: mdb,
 	}, nil
 }

@@ -31,4 +31,4 @@ rpcSVC:
 rsa:
   private:  "conf/rsa_private.pem"
   public: "conf/rsa_public.pem"
-  secret: "douyouSecret"
+  secret: "LoanSecret"

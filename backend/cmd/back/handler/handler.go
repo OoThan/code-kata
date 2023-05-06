@@ -31,9 +31,21 @@ func (h *Handler) Register() {
 	// middleware
 	h.R.Use(middleware.Cors())
 
+	// auth handler
+	authHandler := newAuthHandler(h)
+	authHandler.Register()
+
 	// admin handler
 	adminHandler := newAdminHandler(h)
 	adminHandler.Register()
+
+	// user handler
+	userHandler := newUserHandler(h)
+	userHandler.Register()
+
+	// loan package handler
+	loanPackageHandler := newLoanPackageHandler(h)
+	loanPackageHandler.Register()
 }
 
 func (h *Handler) Destroy() {

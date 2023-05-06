@@ -4,7 +4,6 @@ import (
 	"context"
 	"flag"
 	"loan-back-services/cmd/back/handler"
-	_ "loan-back-services/conf"
 	"loan-back-services/pkg/ds"
 	"loan-back-services/pkg/logger"
 	"net"

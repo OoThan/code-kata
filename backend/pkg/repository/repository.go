@@ -5,8 +5,10 @@ import (
 )
 
 type Repository struct {
-	DS    *ds.DataSource
-	Admin *adminRepository
+	DS          *ds.DataSource
+	Admin       *adminRepository
+	User        *userRepository
+	LoanPackage *loanPackageRepository
 }
 
 type RepoConfig struct {
@@ -15,7 +17,9 @@ type RepoConfig struct {
 
 func NewRepository(c *RepoConfig) *Repository {
 	return &Repository{
-		DS:    c.DS,
-		Admin: newAdminRepository(c),
+		DS:          c.DS,
+		Admin:       newAdminRepository(c),
+		User:        newUserRepository(c),
+		LoanPackage: newLoanPackageRepository(c),
 	}
 }
