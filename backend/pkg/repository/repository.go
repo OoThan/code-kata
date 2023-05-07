@@ -9,6 +9,7 @@ type Repository struct {
 	Admin       *adminRepository
 	User        *userRepository
 	LoanPackage *loanPackageRepository
+	UserLoan    *userLoanRepository
 }
 
 type RepoConfig struct {
@@ -21,5 +22,6 @@ func NewRepository(c *RepoConfig) *Repository {
 		Admin:       newAdminRepository(c),
 		User:        newUserRepository(c),
 		LoanPackage: newLoanPackageRepository(c),
+		UserLoan:    newUserLoanRepository(c),
 	}
 }

@@ -46,6 +46,10 @@ func (h *Handler) Register() {
 	// loan package handler
 	loanPackageHandler := newLoanPackageHandler(h)
 	loanPackageHandler.Register()
+
+	// user loan handler
+	userLoanHandler := newUserLoanHandler(h)
+	userLoanHandler.Register()
 }
 
 func (h *Handler) Destroy() {
