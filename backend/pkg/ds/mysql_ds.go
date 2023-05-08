@@ -5,6 +5,7 @@ import (
 	"gorm.io/gorm"
 	"loan-back-services/conf"
 	"loan-back-services/pkg/logger"
+	"loan-back-services/pkg/model"
 )
 
 func LoadDB() (*gorm.DB, error) {
@@ -30,7 +31,15 @@ func LoadDB() (*gorm.DB, error) {
 	logger.Sugar.Info("Successfully connected to MySQL")
 
 	//migrate DB
-	err = db.AutoMigrate()
+	err = db.AutoMigrate(
+		&model.Admin{},
+		&model.AdminLog{},
+		&model.User{},
+		&model.LoanPackage{},
+		&model.LoanPackageLog{},
+		&model.UserLoan{},
+		&model.UserLoanLog{},
+	)
 	if err != nil {
 		return nil, err
 	}

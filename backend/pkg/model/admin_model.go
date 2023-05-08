@@ -13,8 +13,8 @@ type Admin struct {
 	Password     string         `gorm:"column:password" json:"-"`
 	IP           string         `gorm:"column:ip;type:varchar(20)" json:"ip"`
 	Location     string         `gorm:"column:location;type:varchar(255)" json:"location"`
-	Activated2fa bool           `gorm:"column:activated_2fa;default:false;not null" json:"activated_2fa"`
-	SecretKey2fa string         `gorm:"column:secret_key_2fa;size:191" json:"secret_key_2fa"`
+	Activated2fa bool           `gorm:"column:activated2fa;default:false;not null" json:"activated2fa"`
+	SecretKey2fa string         `gorm:"column:secret_key2fa;size:191" json:"secret_key2fa"`
 	CreatedAt    time.Time      `gorm:"column:created_at" json:"created_at"`
 	UpdatedAt    time.Time      `gorm:"column:updated_at" json:"updated_at"`
 	DeletedAt    gorm.DeletedAt `json:"-"`

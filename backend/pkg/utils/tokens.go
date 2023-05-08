@@ -22,7 +22,7 @@ type adminRefreshTokenCustomClaims struct {
 	jwt.StandardClaims
 }
 
-func GenerateAccessToken(admin *model.Admin) (string, error) {
+func GenerateAccessToken(admin *model.Admin, key *rsa.PrivateKey) (string, error) {
 	unixTime := time.Now().Unix()
 	tokenExp := unixTime + 60*10 // 10 minutes
 
@@ -35,7 +35,7 @@ func GenerateAccessToken(admin *model.Admin) (string, error) {
 	}
 
 	token := jwt.NewWithClaims(jwt.SigningMethodRS256, claims)
-	ss, err := token.SigningString()
+	ss, err := token.SignedString(key)
 	if err != nil {
 		logger.Sugar.Error(err)
 		return "", err

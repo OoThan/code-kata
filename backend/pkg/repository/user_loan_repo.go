@@ -29,7 +29,7 @@ func (r *userLoanRepository) FindByField(ctx context.Context, field, value any) 
 func (r *userLoanRepository) List(ctx context.Context, req *dto.UserListReq) ([]*dto.UserLoanListResp, int64, error) {
 	list := make([]*dto.UserLoanListResp, 0)
 	db := r.DB.WithContext(ctx).Debug().Model(&model.UserLoan{})
-	db.Select("user_loans.*")
+	//db.Select("user_loans.*")
 	var total int64
 	db.Count(&total)
 	if err := db.Scopes(utils.Paginate(req.Page, req.PageSize)).First(&list).Error; err != nil {

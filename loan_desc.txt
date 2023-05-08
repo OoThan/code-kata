@@ -1,0 +1,16 @@
+1. Admin Management
+	Admin CRUD 
+
+2. Loan Package
+  1. Loan Package CRUD
+  2. Loan Package Logs List
+
+3. User Management
+	User CRUD (include givr star/add Blacklist)
+
+4. User Loan Management
+	User Loan (Add ) need (users/ packages list with name filters)
+	Paid Button (calculate loan percentage)
+
+5. Asset Logs and Summarize
+	Logs list

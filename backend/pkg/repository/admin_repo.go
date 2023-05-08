@@ -37,7 +37,7 @@ func (r *adminRepository) FindOrByField(ctx context.Context, field1, field2, val
 func (r *adminRepository) List(ctx context.Context, req *dto.AdminListReq) ([]*dto.AdminListResp, int64, error) {
 	list := make([]*dto.AdminListResp, 0)
 	db := r.DB.WithContext(ctx).Debug().Model(&model.Admin{})
-	db.Select("admins.*")
+	//db.Select("admins.*")
 	var total int64
 	db.Count(&total)
 	if err := db.Scopes(utils.Paginate(req.Page, req.PageSize)).Find(&list).Error; err != nil {
@@ -52,8 +52,9 @@ func (r *adminRepository) Create(ctx context.Context, admin *model.Admin) error 
 		count      int64
 		checkAdmin model.Admin
 	)
-	db.Unscoped().Where("username = ? AND deleted_at IS NOT NULL", admin.Username).Count(&count).First(&checkAdmin)
+	db.Unscoped().Where("username = ? AND deleted_at IS NOT NULL", admin.Username).Count(&count)
 	if count > 0 {
+		db.First(&checkAdmin)
 		admin.Id = checkAdmin.Id
 		admin.CreatedAt = time.Now()
 		admin.UpdatedAt = time.Now()
@@ -61,7 +62,6 @@ func (r *adminRepository) Create(ctx context.Context, admin *model.Admin) error 
 			Time:  time.Time{},
 			Valid: false,
 		}
-
 		return db.Save(&admin).Error
 	}
 

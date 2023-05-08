@@ -2,6 +2,7 @@ package handler
 
 import (
 	"github.com/gin-gonic/gin"
+	"loan-back-services/conf"
 	"loan-back-services/pkg/dto"
 	"loan-back-services/pkg/middleware"
 	"loan-back-services/pkg/repository"
@@ -57,7 +58,7 @@ func (ctr *authHandler) login(c *gin.Context) {
 			return
 		}
 
-		accessToken, err := utils.GenerateAccessToken(admin)
+		accessToken, err := utils.GenerateAccessToken(admin, conf.Rsa().PrivateKey)
 		if err != nil {
 			res = utils.GenerateInternalServerErrorResponse(err.Error())
 			c.JSON(200, res)
@@ -89,7 +90,7 @@ func (ctr *authHandler) login(c *gin.Context) {
 		return
 	}
 
-	validatePassword, err := utils.ComparePasswords(req.Password, admin.Password)
+	validatePassword, err := utils.ComparePasswords(admin.Password, req.Password)
 	if !validatePassword {
 		res = utils.GenerateDisableUserResponse(err.Error())
 		c.JSON(200, res)
@@ -97,7 +98,7 @@ func (ctr *authHandler) login(c *gin.Context) {
 		return
 	}
 
-	accessToken, err := utils.GenerateAccessToken(admin)
+	accessToken, err := utils.GenerateAccessToken(admin, conf.Rsa().PrivateKey)
 	if err != nil {
 		res = utils.GenerateInternalServerErrorResponse(err.Error())
 		c.JSON(200, res)

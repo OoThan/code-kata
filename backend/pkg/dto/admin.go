@@ -12,8 +12,8 @@ type AdminListResp struct {
 	Email        string    `json:"email"`
 	Status       int       `json:"status"`
 	IP           string    `json:"ip"`
-	Activated2fa bool      `json:"activated_2fa"`
-	SecretKey2fa string    `json:"secret_key_2fa"`
+	Activated2fa bool      `json:"activated2fa"`
+	SecretKey2fa string    `json:"secret_key2fa"`
 	CreatedAt    time.Time `json:"created_at"`
 	UpdatedAt    time.Time `json:"updated_at"`
 }
@@ -30,7 +30,7 @@ type AdminEditReq struct {
 	Username string `json:"username" binding:"required"`
 	Email    string `json:"email" binding:"required""`
 	Status   int    `json:"status"`
-	Password string `json:"password" binding:"required"`
+	Password string `json:"password"`
 }
 
 type AdminDeleteReq struct {

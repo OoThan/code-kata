@@ -29,7 +29,7 @@ func (r *userRepository) FindByField(ctx context.Context, field, value any) (*mo
 func (r *userRepository) List(ctx context.Context, req *dto.UserListReq) ([]*dto.UserListResp, int64, error) {
 	list := make([]*dto.UserListResp, 0)
 	db := r.DB.WithContext(ctx).Debug().Model(&model.User{})
-	db.Select("users.*")
+	//db.Select("users.*")
 	var total int64
 	db.Count(&total)
 	if err := db.Scopes(utils.Paginate(req.Page, req.PageSize)).Find(&list).Error; err != nil {

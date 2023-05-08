@@ -17,7 +17,7 @@ type UserListResp struct {
 	Region            string `json:"region"`
 
 	CreatedAt time.Time `json:"created_at"`
-	UpdateAt  time.Time `json:"update_at"`
+	UpdatedAt time.Time `json:"updated_at"`
 }
 
 type UserAddReq struct {
