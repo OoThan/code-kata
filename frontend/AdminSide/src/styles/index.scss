@@ -1,0 +1,147 @@
+@import "./color.scss";
+@import "./custom-default-browser-style.scss";
+@import "./mixin.scss";
+@import "./animation.scss";
+
+:root {
+  --el-component-size-large: 40px;
+  --el-component-size: 40px;
+  --el-component-size-small: 24px;
+}
+
+$appHeaderHeight: 62px;
+
+$sideMenuWidth: 220px;
+
+$breadcrumbHeight: 50px;
+
+$adminContentHeight: calc(
+  100vh - #{$appHeaderHeight} - #{$breadcrumbHeight} - 2px
+);
+
+#nprogress .bar {
+  background: $first_gradient;
+  height: 3px;
+}
+
+@font-face {
+  font-family: "element-icons";
+  font-weight: normal;
+  font-style: normal;
+  src: url("https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.13.2/theme-chalk/fonts/element-icons.woff");
+  font-display: swap;
+}
+
+body {
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #000;
+  width: 100%;
+  height: 100%;
+}
+
+.el-table .cell {
+  overflow: unset !important;
+}
+
+.el-popconfirm__action {
+  text-align: center !important;
+  margin-top: 5px !important;
+}
+
+.el-form-item__content {
+  margin-bottom: 15px;
+}
+
+.form {
+  position: relative;
+  // border: 2px solid #000;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  // border: 1px solid;
+  // border-image-slice: 1;
+  // border-width: 2px;
+  // border-image-source: $second_gradient;
+
+  .form-title {
+    position: absolute;
+    font-size: 1.3rem;
+    top: -25px;
+    left: 25px;
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: $app_background;
+  }
+
+  .form-content {
+    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.2);
+    padding: 30px 20px 20px 20px;
+  }
+
+  .el-form-item {
+    //   width: 150px;
+    display: inline-block;
+    margin: 0 10px;
+  }
+
+  .buttonBox {
+    display: inline-block;
+    margin: 0 10px;
+  }
+}
+
+.app-button {
+  background: $first_gradient;
+  color: $white;
+  border: none;
+}
+.app-button:hover {
+  background: $second_gradient;
+  color: $white;
+}
+
+.el-popper.is-customized {
+  /* Set padding to ensure the height is 32px */
+  padding: 6px 12px;
+  background: $second_gradient;
+  color: $white;
+  letter-spacing: 2px;
+  font-weight: 500;
+}
+
+.el-popper.is-customized .el-popper__arrow::before {
+  background: linear-gradient(45deg, $primaryColor, $secondaryColor);
+  right: 0;
+}
+
+.el-form-item__error {
+  padding-top: 5px;
+}
+
+.table-pager {
+  width: 100%;
+  @include flex-row-center-center;
+  padding: 20px 0;
+  box-sizing: border-box;
+}
+
+.table {
+  box-shadow: 0px 0px 12px rgb(0 0 0 / 20%);
+  padding: 7px;
+  .el-table th {
+    background: #fff !important;
+    color: #303133;
+  }
+}
+
+th {
+  font-weight: bold;
+}
+.el-radio-group {
+  margin-top: 5px;
+}
+
+.tox-notifications-container {
+  display: none;
+}

@@ -2,11 +2,12 @@ package ds
 
 import (
 	"context"
-	"github.com/go-redis/redis/v8"
 	"loan-back-services/conf"
 	"loan-back-services/pkg/logger"
 	"net"
 	"time"
+
+	"github.com/go-redis/redis/v8"
 )
 
 func LoadRDB() (*redis.Client, error) {

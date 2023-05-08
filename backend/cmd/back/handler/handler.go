@@ -1,10 +1,11 @@
 package handler
 
 import (
-	"github.com/gin-gonic/gin"
 	"loan-back-services/pkg/ds"
 	"loan-back-services/pkg/middleware"
 	"loan-back-services/pkg/repository"
+
+	"github.com/gin-gonic/gin"
 )
 
 type Handler struct {

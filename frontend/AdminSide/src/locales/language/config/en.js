@@ -1,0 +1,32 @@
+export default {
+  basicConfig: "Basic Config",
+  userConfig: "User Config",
+  //user config
+  minWithdraw: "Minimun withdrawal :",
+  withdrawFee: "Withdrawal fee :",
+  invitationGiveaway: "Invitation giveaway :",
+  ETHtoUSDT: "ETH to USDT :",
+  convertTRXtoUSD: "Convert TRX to USDT :",
+  usdtIsenabled: "Is enabled USDT :",
+  defaultInviteCode: "Default invite code  :",
+  giveawayAuthTRX: "Giveaway authorized TRX :",
+  giveawayAuthETH: "Goveaway authorized ETH :",
+  miningFloatRange: "Mining floating range :",
+  serialNum: "Seriral Number :",
+  minAmt: "Minimum Amount :",
+  maxAmt: "Maximum Amount :",
+  profitRatio: "Profit Ratio :",
+
+  //basic config
+  ethReceiveAdd: "ETH receiving address :",
+  trxReceiveAdd: "TRX reveiving address :",
+  iniAmtETH: "Initial ETH amount sent :",
+  iniAmtTRX: "Initial TRX amount sent :",
+  iniAmtUSDT: "Initial user's total revenue :",
+  platformNode: "Platfrom node :",
+  platformNum: "Platform number :",
+  googleAuth: "Enable google verification :",
+  turnOnSound: "Trun on sound :",
+  inboxWithdraw: "Inbox withdraw :",
+  enableEmail: "Enabled email :",
+};

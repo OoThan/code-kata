@@ -20,7 +20,7 @@ type AdminListResp struct {
 
 type AdminAddReq struct {
 	Username string `json:"username" binding:"required"`
-	Email    string `json:"email" binding:"required""`
+	Email    string `json:"email" binding:"required"`
 	Status   int    `json:"status"`
 	Password string `json:"password" binding:"required"`
 }
@@ -28,7 +28,7 @@ type AdminAddReq struct {
 type AdminEditReq struct {
 	Id       uint64 `json:"id" binding:"required"`
 	Username string `json:"username" binding:"required"`
-	Email    string `json:"email" binding:"required""`
+	Email    string `json:"email" binding:"required"`
 	Status   int    `json:"status"`
 	Password string `json:"password"`
 }

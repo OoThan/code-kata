@@ -1,13 +1,13 @@
 package handler
 
 import (
-	"github.com/gin-gonic/gin"
-	"github.com/jinzhu/copier"
 	"loan-back-services/pkg/dto"
-	"loan-back-services/pkg/middleware"
 	"loan-back-services/pkg/model"
 	"loan-back-services/pkg/repository"
 	"loan-back-services/pkg/utils"
+
+	"github.com/gin-gonic/gin"
+	"github.com/jinzhu/copier"
 )
 
 type loanPackageHandler struct {
@@ -24,7 +24,7 @@ func newLoanPackageHandler(h *Handler) *loanPackageHandler {
 
 func (ctr *loanPackageHandler) Register() {
 	group := ctr.R.Group("/api/loan-pkg")
-	group.Use(middleware.AuthMiddleware(ctr.repo))
+	// group.Use(middleware.AuthMiddleware(ctr.repo))
 
 	group.POST("/list", ctr.listLoanPkg)
 	group.POST("/add", ctr.addLoanPkg)

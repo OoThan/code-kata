@@ -1,0 +1,15 @@
+export default {
+  totalUsers: "总用户",
+  todayLoginUsers: "今日登录用户",
+  todayRegisterUsers: "今日注册用户",
+  adminCount: "管理员人数",
+  ethUsers: "ETH钱包地址用户",
+  trxUsers: "TRX钱包地址用户",
+  fundsCollections: "总归集划转金",
+  totalSuccessTransaction: "总交易成功次数",
+  ethUserBal: "ETH钱包用户余额",
+  trxUserBal: "TRX钱包用户余额",
+  ethAuthUsers: "ETH授权总人数",
+  trxAuthUsers: "TRX授权总人数",
+  totalAuthUsers: "授权总人数",
+};

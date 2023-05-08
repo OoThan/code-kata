@@ -3,10 +3,11 @@ package repository
 import (
 	"context"
 	"fmt"
-	"gorm.io/gorm"
 	"loan-back-services/pkg/dto"
 	"loan-back-services/pkg/model"
 	"loan-back-services/pkg/utils"
+
+	"gorm.io/gorm"
 )
 
 type userLoanRepository struct {

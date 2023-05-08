@@ -1,7 +1,6 @@
 package handler
 
 import (
-	"github.com/gin-gonic/gin"
 	"loan-back-services/conf"
 	"loan-back-services/pkg/dto"
 	"loan-back-services/pkg/middleware"
@@ -9,6 +8,8 @@ import (
 	"loan-back-services/pkg/utils"
 	"strings"
 	"time"
+
+	"github.com/gin-gonic/gin"
 )
 
 type authHandler struct {
@@ -92,7 +93,7 @@ func (ctr *authHandler) login(c *gin.Context) {
 
 	validatePassword, err := utils.ComparePasswords(admin.Password, req.Password)
 	if !validatePassword {
-		res = utils.GenerateDisableUserResponse(err.Error())
+		res = utils.GenerateDisableUserResponse("Invalid Password")
 		c.JSON(200, res)
 		c.Abort()
 		return

@@ -1,8 +1,9 @@
 package model
 
 import (
-	"gorm.io/gorm"
 	"time"
+
+	"gorm.io/gorm"
 )
 
 type User struct {
@@ -11,7 +12,7 @@ type User struct {
 	UserNRC           string `gorm:"column:user_nrc;unique;not null" json:"user_nrc"`
 	UserPhoneNumber   string `gorm:"column:user_phone_number;not null" json:"user_phone_number"`
 	ReferenceUserName string `gorm:"column:reference_user_name" json:"reference_user_name"`
-	Street            string `gorm:"column:street;not null"json:"street"`
+	Street            string `gorm:"column:street;not null" json:"street"`
 	City              string `gorm:"column:city;not null" json:"city"`
 	Region            string `gorm:"column:region;not null" json:"region"`
 

@@ -1,12 +1,13 @@
 package middleware
 
 import (
-	"github.com/gin-gonic/gin"
 	"loan-back-services/conf"
 	"loan-back-services/pkg/dto"
 	"loan-back-services/pkg/repository"
 	"loan-back-services/pkg/utils"
 	"strings"
+
+	"github.com/gin-gonic/gin"
 )
 
 type authHeader struct {

@@ -1,0 +1,266 @@
+$bg: #fff;
+$light_gray: #eee;
+$cursor: #fff;
+
+.container {
+  .login-container::before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background: rgb(5, 0, 15);
+    opacity: 0.7;
+  }
+
+  .login-container {
+    background-image: url(./../assets/images/library.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    .login {
+      position: relative;
+      text-align: center;
+      width: 100%;
+
+      .login-header {
+        display: none;
+        margin-bottom: 27px;
+        h3 {
+          margin-top: 30px;
+          color: #000;
+          font-size: 30px;
+          font-weight: bold;
+        }
+      }
+      .login-wrapper {
+        align-items: center;
+        background: #f6f7f9;
+        max-width: 400px;
+        margin: 0 auto 30px auto;
+        box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1),
+          0px 2px 24px rgba(0, 0, 0, 0.12),
+          inset 0px 1px 2px rgba(178, 204, 255, 0.1);
+        border-radius: 16px;
+        .login-body {
+          text-align: center;
+          padding: 30px;
+          margin: 0 auto;
+
+          .login-title {
+            h3 {
+              color: #000;
+              font-size: 30px;
+            }
+          }
+          .login-form {
+            margin-top: 30px;
+
+            :deep(.el-form-item__label) {
+              color: #000;
+              padding: 0;
+              font-size: 14px;
+            }
+            :deep(.el-input__wrapper) {
+              border: 1px solid #999;
+              background: $bg;
+            }
+            :deep(.el-input__inner) {
+              color: #000;
+              border: none;
+              background: $bg;
+              font-size: 14px;
+            }
+          }
+
+          .login-button {
+            margin-top: 15px;
+            padding: 20px;
+            background: $sidbarActiveBg;
+            border: none;
+            border-radius: 8px;
+          }
+        }
+        .login-footer {
+          text-align: center;
+          margin: 0 auto;
+          padding: 30px;
+          border-top: 0.1px solid rgb(#fff, 0.1);
+          p {
+            color: #000;
+            font-size: 14px;
+            span {
+              color: #0579ff;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .side-container {
+    display: none;
+  }
+  .login-header {
+    display: block !important;
+  }
+}
+
+.heart-wrapper {
+  width: 100%;
+  // background: #f3f4f4;
+  min-height: 100%;
+  overflow: hidden;
+  text-align: center;
+  position: fixed;
+
+  .x1 {
+    left: 5%;
+    -webkit-transform: scale(0.9);
+    -moz-transform: scale(0.9);
+    transform: scale(0.9);
+    opacity: 0.6;
+    animation: moveclouds 10s linear infinite,
+      sideWays 4s ease-in-out infinite alternate;
+    -webkit-animation: moveclouds 10s linear infinite,
+      sideWays 4s ease-in-out infinite alternate;
+    -moz-animation: moveclouds 10s linear infinite,
+      sideWays 4s ease-in-out infinite alternate;
+  }
+  .x2 {
+    left: 25%;
+    -webkit-transform: scale(0.6);
+    -moz-transform: scale(0.6);
+    transform: scale(0.6);
+    opacity: 0.9;
+    animation: moveclouds 25s linear infinite,
+      sideWays 5s ease-in-out infinite alternate;
+    -webkit-animation: moveclouds 25s linear infinite,
+      sideWays 5s ease-in-out infinite alternate;
+    -moz-animation: moveclouds 25s linear infinite,
+      sideWays 5s ease-in-out infinite alternate;
+  }
+  .x3 {
+    left: 52%;
+    -webkit-transform: scale(0.8);
+    -moz-transform: scale(0.8);
+    transform: scale(0.8);
+    opacity: 0.8;
+    animation: moveclouds 20s linear infinite,
+      sideWays 4s ease-in-out infinite alternate;
+    -webkit-animation: moveclouds 20s linear infinite,
+      sideWays 4s ease-in-out infinite alternate;
+    -moz-animation: moveclouds 20s linear infinite,
+      sideWays 4s ease-in-out infinite alternate;
+  }
+  .x4 {
+    left: 5%;
+    -webkit-transform: scale(0.75);
+    -moz-transform: scale(0.75);
+    transform: scale(0.75);
+    opacity: 0.9;
+    animation: moveclouds 18s linear infinite,
+      sideWays 2s ease-in-out infinite alternate;
+    -webkit-animation: moveclouds 18s linear infinite,
+      sideWays 2s ease-in-out infinite alternate;
+    -moz-animation: moveclouds 18s linear infinite,
+      sideWays 0zs ease-in-out infinite alternate;
+  }
+  .x5 {
+    left: 40%;
+    -webkit-transform: scale(0.8);
+    -moz-transform: scale(0.8);
+    transform: scale(0.8);
+    opacity: 0.3;
+    animation: moveclouds 7s linear infinite,
+      sideWays 1s ease-in-out infinite alternate;
+    -webkit-animation: moveclouds 7s linear infinite,
+      sideWays 1s ease-in-out infinite alternate;
+    -moz-animation: moveclouds 7s linear infinite,
+      sideWays 1s ease-in-out infinite alternate;
+  }
+  .x6 {
+    left: 33%;
+    opacity: 1;
+    -webkit-animation: moveclouds 12s linear infinite,
+      swayWays 9s ease-in-out infinite alternate;
+    animation: moveclouds 12s linear infinite,
+      swayWays 9s ease-in-out infinite alternate;
+    -moz-animation: moveclouds 12s linear infinite,
+      swayWays 9s ease-in-out infinite alternate;
+  }
+
+  @-webkit-keyframes moveclouds {
+    0% {
+      top: 1000px;
+    }
+    100% {
+      top: -500px;
+    }
+  }
+
+  @keyframes moveclouds {
+    0% {
+      top: 1000px;
+    }
+    100% {
+      top: -500px;
+    }
+  }
+
+  @-webkit-keyframes sideWays {
+    0% {
+      margin-left: 0px;
+    }
+    100% {
+      margin-left: 50px;
+    }
+  }
+
+  @keyframes sideWays {
+    0% {
+      margin-left: 0px;
+    }
+    100% {
+      margin-left: 50px;
+    }
+  }
+
+  @-webkit-keyframes swayWays {
+    0% {
+      transform: rotate(12deg);
+      left: -0.3%;
+    }
+    33% {
+      transform: rotate(-2deg);
+      left: 0.7%;
+    }
+    100% {
+      transform: rotate(0deg);
+      left: -12%;
+    }
+  }
+
+  @keyframes swayWays {
+    0% {
+      transform: rotate(12deg);
+      left: -0.3%;
+    }
+    33% {
+      transform: rotate(-2deg);
+      left: 0.7%;
+    }
+    100% {
+      transform: rotate(0deg);
+      left: -12%;
+    }
+  }
+}

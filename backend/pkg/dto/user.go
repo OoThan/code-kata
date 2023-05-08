@@ -20,6 +20,15 @@ type UserListResp struct {
 	UpdatedAt time.Time `json:"updated_at"`
 }
 
+type UsernameFilterListReq struct {
+	Username string `json:"username"`
+}
+
+type UsernameFilterListResp struct {
+	Id       uint64 `json:"id"`
+	Username string `json:"username"`
+}
+
 type UserAddReq struct {
 	Username          string `json:"username" binding:"required"`
 	UserNRC           string `json:"user_nrc" binding:"required"`
@@ -32,6 +41,7 @@ type UserAddReq struct {
 
 type UserEditReq struct {
 	Id                uint64 `json:"id" binding:"required"`
+	Username          string `json:"username" binding:"required"`
 	UserNRC           string `json:"user_nrc" binding:"required"`
 	UserPhoneNumber   string `json:"user_phone_number" binding:"required"`
 	ReferenceUserName string `json:"reference_user_name"`

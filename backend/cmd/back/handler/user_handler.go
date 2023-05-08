@@ -1,13 +1,13 @@
 package handler
 
 import (
-	"github.com/gin-gonic/gin"
-	"github.com/jinzhu/copier"
 	"loan-back-services/pkg/dto"
-	"loan-back-services/pkg/middleware"
 	"loan-back-services/pkg/model"
 	"loan-back-services/pkg/repository"
 	"loan-back-services/pkg/utils"
+
+	"github.com/gin-gonic/gin"
+	"github.com/jinzhu/copier"
 )
 
 type userHandler struct {
@@ -24,7 +24,7 @@ func newUserHandler(h *Handler) *userHandler {
 
 func (ctr *userHandler) Register() {
 	group := ctr.R.Group("/api/user")
-	group.Use(middleware.AuthMiddleware(ctr.repo))
+	// group.Use(middleware.AuthMiddleware(ctr.repo))
 
 	group.POST("/list", ctr.listUser)
 	group.POST("/add", ctr.addUser)
@@ -103,6 +103,7 @@ func (ctr *userHandler) editUser(c *gin.Context) {
 		Value: req.Id,
 		Data:  map[string]any{},
 	}
+	updateFields.Data["username"] = req.Username
 	updateFields.Data["user_nrc"] = req.UserNRC
 	updateFields.Data["user_phone_number"] = req.UserPhoneNumber
 	updateFields.Data["reference_user_name"] = req.ReferenceUserName

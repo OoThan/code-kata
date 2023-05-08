@@ -37,7 +37,6 @@ func ComparePasswords(storedPassword string, suppliedPassword string) (bool, err
 
 	// check supplied password salted with hash
 	salt, err := hex.DecodeString(pwsalt[1])
-
 	if err != nil {
 		return false, errors.New("unable to verify user password")
 	}

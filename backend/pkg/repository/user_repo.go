@@ -3,10 +3,11 @@ package repository
 import (
 	"context"
 	"fmt"
-	"gorm.io/gorm"
 	"loan-back-services/pkg/dto"
 	"loan-back-services/pkg/model"
 	"loan-back-services/pkg/utils"
+
+	"gorm.io/gorm"
 )
 
 type userRepository struct {
@@ -36,6 +37,16 @@ func (r *userRepository) List(ctx context.Context, req *dto.UserListReq) ([]*dto
 		return nil, 0, err
 	}
 	return list, total, nil
+}
+
+func (r *userRepository) UsernameFilterList(ctx context.Context, req *dto.UsernameFilterListReq) ([]*dto.UsernameFilterListResp, error) {
+	list := make([]*dto.UsernameFilterListResp, 0)
+	db := r.DB.WithContext(ctx).Debug().Model(&model.User{})
+	db.Where("username LIKE ?", "%"+req.Username+"%")
+	if err := db.Find(&list).Error; err != nil {
+		return nil, err
+	}
+	return list, nil
 }
 
 func (r *userRepository) Create(ctx context.Context, user *model.User) error {

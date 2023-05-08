@@ -1,0 +1,15 @@
+export default {
+  totalUsers: "Total users",
+  todayLoginUsers: "Today login users",
+  todayRegisterUsers: "Today register user",
+  adminCount: "Admin count",
+  ethUsers: "ETH users",
+  trxUsers: "TRX users",
+  fundsCollections: "Total funds collections",
+  totalSuccessTransaction: "Total successful transactions count",
+  ethUserBal: "ETH users balance",
+  trxUserBal: "TRX users balance",
+  ethAuthUsers: "Authorized ETH users",
+  trxAuthUsers: "Authorized TRX users",
+  totalAuthUsers: "Total authorized users",
+};

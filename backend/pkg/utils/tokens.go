@@ -3,13 +3,14 @@ package utils
 import (
 	"crypto/rsa"
 	"errors"
-	"github.com/golang-jwt/jwt"
-	"github.com/google/uuid"
 	"loan-back-services/conf"
 	"loan-back-services/pkg/dto"
 	"loan-back-services/pkg/logger"
 	"loan-back-services/pkg/model"
 	"time"
+
+	"github.com/golang-jwt/jwt"
+	"github.com/google/uuid"
 )
 
 type adminAccessTokenCustomClaims struct {

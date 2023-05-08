@@ -3,11 +3,12 @@ package repository
 import (
 	"context"
 	"fmt"
-	"gorm.io/gorm"
 	"loan-back-services/pkg/dto"
 	"loan-back-services/pkg/logger"
 	"loan-back-services/pkg/model"
 	"loan-back-services/pkg/utils"
+
+	"gorm.io/gorm"
 )
 
 type loanPackageRepository struct {
@@ -38,6 +39,16 @@ func (r *loanPackageRepository) List(ctx context.Context, req *dto.LoanPackageLi
 		return nil, 0, err
 	}
 	return list, total, nil
+}
+
+func (r *loanPackageRepository) PackageNoFilterList(ctx context.Context, req *dto.PackageNameFilterListReq) ([]*dto.PackageNameFilterListResp, error) {
+	list := make([]*dto.PackageNameFilterListResp, 0)
+	db := r.DB.WithContext(ctx).Debug().Model(&model.LoanPackage{})
+	db.Where("package_no LIKE ?", "%"+req.PackageNo+"%")
+	if err := db.Find(&list).Error; err != nil {
+		return nil, err
+	}
+	return list, nil
 }
 
 func (r *loanPackageRepository) Create(ctx context.Context, loanPkg *model.LoanPackage) error {
