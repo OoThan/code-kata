@@ -19,18 +19,18 @@ type LoanPackageListResp struct {
 }
 
 type LoanPackageAddReq struct {
-	PackageNo string  `json:"package_no" binding:"required"`
-	Creator   uint64  `json:"creator" binding:"required"`
-	Amount    float64 `json:"amount"`
-	Percent   float64 `json:"percent"`
+	PackageNo string `json:"package_no" binding:"required"`
+	//Creator   uint64  `json:"creator" binding:"required"`
+	Amount  float64 `json:"amount"`
+	Percent float64 `json:"percent"`
 }
 
 type LoanPackageEditReq struct {
-	Id        uint64  `json:"id" binding:"required"`
-	PackageNo string  `json:"package_no" binding:"required"`
-	Creator   uint64  `json:"creator" binding:"required"`
-	Amount    float64 `json:"amount"`
-	Percent   float64 `json:"percent"`
+	Id        uint64 `json:"id" binding:"required"`
+	PackageNo string `json:"package_no" binding:"required"`
+	//Creator   uint64  `json:"creator" binding:"required"`
+	Amount  float64 `json:"amount"`
+	Percent float64 `json:"percent"`
 }
 
 type LoanPackageDeleteReq struct {

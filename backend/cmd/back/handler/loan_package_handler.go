@@ -62,6 +62,7 @@ func (ctr *loanPackageHandler) listLoanPkg(c *gin.Context) {
 func (ctr *loanPackageHandler) addLoanPkg(c *gin.Context) {
 	res := &dto.ResponseObject{}
 	req := &dto.LoanPackageAddReq{}
+	admin := c.MustGet("admin").(*model.Admin)
 	if err := c.ShouldBind(&req); err != nil {
 		res = utils.GenerateBindingErrorResponse(err)
 		c.JSON(200, res)
@@ -70,6 +71,7 @@ func (ctr *loanPackageHandler) addLoanPkg(c *gin.Context) {
 	}
 
 	loanPkg := &model.LoanPackage{}
+	loanPkg.Creator = admin.Id
 	if err := copier.Copy(&loanPkg, &req); err != nil {
 		res = utils.GenerateBindingErrorResponse(err)
 		c.JSON(200, res)
@@ -92,6 +94,7 @@ func (ctr *loanPackageHandler) addLoanPkg(c *gin.Context) {
 func (ctr *loanPackageHandler) editLoanPkg(c *gin.Context) {
 	res := &dto.ResponseObject{}
 	req := &dto.LoanPackageEditReq{}
+	admin := c.MustGet("admin").(*model.Admin)
 	if err := c.ShouldBind(&req); err != nil {
 		res = utils.GenerateBindingErrorResponse(err)
 		c.JSON(200, res)
@@ -105,7 +108,7 @@ func (ctr *loanPackageHandler) editLoanPkg(c *gin.Context) {
 		Data:  map[string]any{},
 	}
 	updateFields.Data["package_no"] = req.PackageNo
-	updateFields.Data["creator"] = req.Creator
+	updateFields.Data["creator"] = admin.Id
 	updateFields.Data["amount"] = req.Amount
 	updateFields.Data["percent"] = req.Percent
 

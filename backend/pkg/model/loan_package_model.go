@@ -7,7 +7,7 @@ import (
 
 type LoanPackage struct {
 	Id        uint64         `gorm:"column:id;primaryKey" json:"id"`
-	PackageNo string         `gorm:"column:package_no" json:"package_no"`
+	PackageNo string         `gorm:"column:package_no;unique" json:"package_no"`
 	Creator   uint64         `gorm:"column:creator;not null" json:"creator"`
 	Amount    float64        `gorm:"column:amount" json:"amount"`
 	Percent   float64        `gorm:"column:percent" json:"percent"`

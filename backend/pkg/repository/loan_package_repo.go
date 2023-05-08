@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"gorm.io/gorm"
 	"loan-back-services/pkg/dto"
+	"loan-back-services/pkg/logger"
 	"loan-back-services/pkg/model"
 	"loan-back-services/pkg/utils"
 )
@@ -67,7 +68,9 @@ func (r *loanPackageRepository) Update(ctx context.Context, updateFields *model.
 		BeforePercent: loanPkg.Percent,
 		AfterPercent:  updateFields.Data["percent"].(float64),
 	}
-	if err := db.Model(&model.LoanPackageLog{}).Create(&log).Error; err != nil {
+
+	logger.Sugar.Debugf("%+v", log)
+	if err := tx.WithContext(ctx).Debug().Model(&model.LoanPackageLog{}).Create(&log).Error; err != nil {
 		tx.Rollback()
 		return err
 	}
