@@ -25,7 +25,8 @@ type adminRefreshTokenCustomClaims struct {
 
 func GenerateAccessToken(admin *model.Admin, key *rsa.PrivateKey) (string, error) {
 	unixTime := time.Now().Unix()
-	tokenExp := unixTime + 60*10 // 10 minutes
+	// tokenExp := unixTime + 60*10 // 10 minutes
+	tokenExp := unixTime + 60*60*24 // 10 minutes
 
 	claims := adminAccessTokenCustomClaims{
 		Admin: admin,

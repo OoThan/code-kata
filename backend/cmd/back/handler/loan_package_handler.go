@@ -2,6 +2,7 @@ package handler
 
 import (
 	"loan-back-services/pkg/dto"
+	"loan-back-services/pkg/middleware"
 	"loan-back-services/pkg/model"
 	"loan-back-services/pkg/repository"
 	"loan-back-services/pkg/utils"
@@ -24,9 +25,10 @@ func newLoanPackageHandler(h *Handler) *loanPackageHandler {
 
 func (ctr *loanPackageHandler) Register() {
 	group := ctr.R.Group("/api/loan-pkg")
-	// group.Use(middleware.AuthMiddleware(ctr.repo))
+	group.Use(middleware.AuthMiddleware(ctr.repo))
 
 	group.POST("/list", ctr.listLoanPkg)
+	group.POST("/list-log", ctr.listLoanPkgLog)
 	group.POST("/add", ctr.addLoanPkg)
 	group.POST("/edit", ctr.editLoanPkg)
 	group.POST("/delete", ctr.deleteLoanPkg)
@@ -43,6 +45,33 @@ func (ctr *loanPackageHandler) listLoanPkg(c *gin.Context) {
 	}
 
 	list, total, err := ctr.repo.LoanPackage.List(c.Request.Context(), req)
+	if err != nil {
+		res = utils.GenerateGormErrorResponse(err)
+		c.JSON(200, res)
+		c.Abort()
+		return
+	}
+
+	data := gin.H{
+		"list":  list,
+		"total": total,
+	}
+
+	res = utils.GenerateSuccessResponse(data)
+	c.JSON(res.HttpStatusCode, res)
+}
+
+func (ctr *loanPackageHandler) listLoanPkgLog(c *gin.Context) {
+	res := &dto.ResponseObject{}
+	req := &dto.LoanPackageLogListReq{}
+	if err := c.ShouldBind(&req); err != nil {
+		res = utils.GenerateBindingErrorResponse(err)
+		c.JSON(200, res)
+		c.Abort()
+		return
+	}
+
+	list, total, err := ctr.repo.LoanPackage.LogList(c.Request.Context(), req)
 	if err != nil {
 		res = utils.GenerateGormErrorResponse(err)
 		c.JSON(200, res)

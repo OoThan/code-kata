@@ -1,10 +1,6 @@
 import { admin } from "./admin";
-import { article } from "./aritcle";
-import { bookManagement } from "./bookManagement";
 import { userManagement } from "./userManagement";
-import { borrowHistory } from "./borrowHistory";
-import { report } from "./report";
-import { config } from "./config";
+import { loanManagement } from "./loanManagement";
 
 export const routes = [
   {
@@ -29,21 +25,17 @@ export const routes = [
     },
   },
   {
-    name: "dashboard",
+    name: "Dashboard",
     path: "/home",
     component: () => import("@/pages/home/index.vue"),
     meta: {
-      title: "dashboard",
+      title: "Dashboard",
       auth: false,
       layout: "admin",
       tagsView: true,
     },
   },
   ...admin,
-  ...article,
-  ...config,
-  ...bookManagement,
   ...userManagement,
-  ...borrowHistory,
-  ...report,
+  ...loanManagement,
 ];

@@ -2,6 +2,7 @@ package handler
 
 import (
 	"loan-back-services/pkg/dto"
+	"loan-back-services/pkg/middleware"
 	"loan-back-services/pkg/model"
 	"loan-back-services/pkg/repository"
 	"loan-back-services/pkg/utils"
@@ -24,7 +25,7 @@ func newUserHandler(h *Handler) *userHandler {
 
 func (ctr *userHandler) Register() {
 	group := ctr.R.Group("/api/user")
-	// group.Use(middleware.AuthMiddleware(ctr.repo))
+	group.Use(middleware.AuthMiddleware(ctr.repo))
 
 	group.POST("/list", ctr.listUser)
 	group.POST("/add", ctr.addUser)

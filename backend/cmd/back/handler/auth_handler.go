@@ -93,7 +93,9 @@ func (ctr *authHandler) login(c *gin.Context) {
 
 	validatePassword, err := utils.ComparePasswords(admin.Password, req.Password)
 	if !validatePassword {
-		res = utils.GenerateDisableUserResponse("Invalid Password")
+		// res = utils.GenerateDisableUserResponse("Invalid Password")
+		res = utils.GenerateDisableUserResponse(err.Error())
+
 		c.JSON(200, res)
 		c.Abort()
 		return

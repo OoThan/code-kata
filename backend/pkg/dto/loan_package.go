@@ -18,6 +18,23 @@ type LoanPackageListResp struct {
 	UpdatedAt time.Time `json:"updated_at"`
 }
 
+type LoanPackageLogListReq struct {
+	RequestLimit
+}
+
+type LoanPackageLogListResp struct {
+	Id            uint64    `json:"id"`
+	PackageNo     uint64    `json:"package_no"`
+	Creator       uint64    `json:"creator"`
+	CreatorName   string    `json:"creator_name"`
+	BeforeAmount  float64   `json:"before_amount"`
+	AfterAmount   float64   `json:"after_amount"`
+	BeforePercent float64   `json:"before_percent"`
+	AfterPercent  float64   `json:"after_percent"`
+	CreatedAt     time.Time `json:"created_at"`
+	UpdatedAt     time.Time `json:"updated_at"`
+}
+
 type PackageNameFilterListReq struct {
 	PackageNo string `json:"package_no"`
 }

@@ -41,6 +41,19 @@ func (r *loanPackageRepository) List(ctx context.Context, req *dto.LoanPackageLi
 	return list, total, nil
 }
 
+func (r *loanPackageRepository) LogList(ctx context.Context, req *dto.LoanPackageLogListReq) ([]*dto.LoanPackageLogListResp, int64, error) {
+	list := make([]*dto.LoanPackageLogListResp, 0)
+	db := r.DB.WithContext(ctx).Debug().Model(&model.LoanPackageLog{})
+	db.Select("loan_package_logs.*, admins.username as creator_name")
+	db.Joins("inner join admins on admins.id = loan_package_logs.creator")
+	var total int64
+	db.Count(&total)
+	if err := db.Scopes(utils.Paginate(req.Page, req.PageSize)).Find(&list).Error; err != nil {
+		return nil, 0, err
+	}
+	return list, total, nil
+}
+
 func (r *loanPackageRepository) PackageNoFilterList(ctx context.Context, req *dto.PackageNameFilterListReq) ([]*dto.PackageNameFilterListResp, error) {
 	list := make([]*dto.PackageNameFilterListResp, 0)
 	db := r.DB.WithContext(ctx).Debug().Model(&model.LoanPackage{})
