@@ -31,3 +31,10 @@ export const deleteLoanPackage = (data) =>
     method: "POST",
     data,
   });
+
+export const getLoanPackageLogList = (data) =>
+  http({
+    url: "/loan-pkg/list-log",
+    method: "POST",
+    data,
+  });

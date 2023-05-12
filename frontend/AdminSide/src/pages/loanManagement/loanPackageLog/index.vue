@@ -63,45 +63,38 @@
         height="65vh"
         style="width: 100%"
       >
-        <el-table-column prop="id" label="ID" align="center" />
+        <el-table-column prop="package_no" label="Package No" align="center" />
         <el-table-column
-          prop="username"
-          label="Username"
+          prop="before_amount"
+          label="Before Amount"
           align="center"
-          width="200"
-        />
-        <el-table-column
-          prop="user_nrc"
-          label="NRC"
-          align="center"
-          width="250"
-        />
-        <el-table-column
-          prop="user_phone_number"
-          label="Phone No"
-          align="center"
-          width="200"
-        />
-        <el-table-column
-          prop="reference_user_name"
-          label="Reference User Name"
-          align="center"
-          width="250"
         />
 
         <el-table-column
-          prop="street"
-          label="Street"
+          prop="after_amount"
+          label="After Amount"
           align="center"
-          width="250"
         />
-        <el-table-column prop="city" label="City" align="center" width="250" />
+
         <el-table-column
-          prop="region"
-          label="Region"
+          prop="before_percent"
+          label="Before Percent"
           align="center"
-          width="250"
         />
+
+        <el-table-column
+          prop="after_percent"
+          label="After Percent"
+          align="center"
+        />
+
+        <el-table-column prop="creator_name" label="Editor" align="center" />
+
+        <el-table-column label="Update Time" align="center">
+          <template #default="scope">
+            {{ dateFormat(scope.row.updated_at) }}
+          </template>
+        </el-table-column>
 
         <!-- <el-table-column label="Disabled" align="center">
           <template #default="scope">
@@ -116,7 +109,7 @@
           </template>
         </el-table-column> -->
 
-        <el-table-column
+        <!-- <el-table-column
           label="Operate"
           align="center"
           width="120"
@@ -155,7 +148,7 @@
               </el-button>
             </el-tooltip>
           </template>
-        </el-table-column>
+        </el-table-column> -->
       </el-table>
 
       <div class="table-pager">
@@ -227,7 +220,7 @@ export default {
 
     const getTableLists = () => {
       state.isLoading = true;
-      http.userManagement.getUserList(state.param).then((res) => {
+      http.loanManagement.getLoanPackageLogList(state.param).then((res) => {
         if (res.data.err_code == 0) {
           console.log(res.data.data.list);
           state.tableLists = res.data.data.list;
